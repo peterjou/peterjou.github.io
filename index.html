@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#wrap{width:100px;height:100px;position:absolute;left:700px;top:300px;}
+			#tab{position:relative;height:100px;width:100px;}
+			#tab img{width:98px;height:98px;border-radius:50%;position:absolute;top:0px;left:0px; -webkit-transition:0.5s all ease;}
+			#home{width:98px;height:98px;border-radius:50%;position:absolute;top:0px;left:0px;background:url(img/2.jpg) no-repeat;transition:2s;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="tab">
+				<img src="img/5.jpg"/>
+				<img src="img/6.jpg"/>
+				<img src="img/7.jpg"/>
+				<img src="img/8.jpg"/>
+				<img src="img/1.jpg"/>
+			</div>
+			<div id="home"></div>
+		</div>
+	</body>
+	<script>
+		var home=document.getElementById('home');
+		var aImg=document.getElementsByTagName('img');
+		var onOff=true;
+		var R=-300;
+		home.onclick=function ()
+		{
+			if(onOff)
+			{
+				for(var i=0;i<aImg.length;i++)
+				{
+					var fbc=fb(R,120/4*i);
+					aImg[i].style.WebkitTransform='rotate(-720deg)';
+					aImg[i].style.left=fbc.l+'px';
+					aImg[i].style.top=fbc.t+'px';
+					aImg[i].style.transition="0.5s "+i*300+"ms";
+				}
+				this.style.WebkitTransform='rotate(-360deg)';
+			}
+			else
+			{
+				this.style.WebkitTransform='rotate(0deg)';
+				for(var i=0;i<aImg.length;i++)
+				{
+					var fbc=fb(R,120/4*i);
+					aImg[i].style.WebkitTransform='rotate(-720deg)';
+					aImg[i].style.left=0+'px';
+					aImg[i].style.top=0+'px';
+					aImg[i].style.transition="0.5s "+(aImg.length-i-1)*200+"ms";
+				}	
+			}
+			onOff=!onOff;
+		};
+		function fb(R,ideg)
+		{
+			return {
+				l:Math.round(Math.sin(ideg/180*Math.PI)*R),
+				t:Math.round(Math.cos(ideg/180*Math.PI)*R)
+				}
+		}
+	</script>
+</html>
