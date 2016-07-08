@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+img{border:none;}
+li{list-style:none;}
+.move1{ width: 10px;height: 10px; border-radius: 50%;border: 2px solid #000000;position: absolute;left: 0;top: 0;display: none;}
+ #game{width:60px;height:60px;background-position:center;position:fixed;left:0px;top:0px;}
+ .right{background:url(img2/right.png) no-repeat;}
+ .left{background:url(img2/left.png) no-repeat;}
+ .top{background:url(img2/up.png) no-repeat;}
+  .fly{background:url(img2/fly.png) no-repeat;}
+ .bottom{background:url(img2/down.png) no-repeat;}
+ #gameshow{width:50px;height:60px;}
+ #gameshow div{width:50px;height:60px;position:fixed;right:-60px;bottom:0;z-index:1;}
+ .biu{position:fixed;width:20px;height:20px;border-radius:50%;background:#000;left:0;top:0;}
+#start{background:#ccc;font-size:20px;margin:20px;padding:2px 4px;height:30px;width:100px;line-height:30px;cursor:pointer;}
+#gametext{border:1px solid #ccc;display:inline-block;margin:30px auto;}
+#gametext p{line-height:24px;font-size:20px;padding:4px;}
+.mean{padding:2px 4px;display:inline-block;margin-top:10px;margin-left:20px;font-size:24px;border:1px solid #ccc;}
+</style>
+<script src="peter.js"></script>
+<script>
+window.onload=function()
+{
+		var start=document.getElementById('start');
+		var aspan=document.getElementsByTagName('span');
+		var amove=document.getElementsByClassName('move1');
+		var game=document.getElementById('game');
+		var gameshow=document.getElementById('gameshow');
+		var odiv=gameshow.getElementsByTagName('div');
+		var oimg=gameshow.getElementsByTagName('img');
+		var n=0;
+		var arr=[];				//用于写键盘的数组
+		var cx=0;				//图片为left值
+		var cy=0;				//为top值
+		var speed=6;	//为速度，挑起的速度
+		var y=0;
+		var i=0;
+		var ox=odiv[0].offsetLeft;
+		var tx=odiv[0].offsetLeft;
+		var url=['img2/gama1.png','img2/game2.png','img2/game3.png','img2/game4.png','img2/game5.png','img2/game6.png']
+		var timers=null;
+		var cnt=0;
+		var csn=0;
+		start.onclick=function()
+		{
+				fk();
+		}
+		function fk()
+		{
+			var cn=0;
+			var vnn=0;
+			timers=setInterval(function (){
+						ox=ox-6;
+						if(ox<0)
+						{
+							cnt++;
+							ox=window.innerWidth;
+							url.sort(function(a,b){
+									return 0.5-Math.random();
+								})
+								oimg[0].src=url[0];
+								cn=Math.random()*10+10
+						}
+						y=Math.random()*1200+1000;
+						odiv[0].style.left=ox+'px';
+						odiv[0].style.bottom=cn+'px';
+						aspan[0].innerHTML='游戏得分:'+cnt;
+					},16)
+					setTimeout(function(){
+							timers1=setInterval(function(){
+									tx=tx-8;
+									if(tx<0)
+									{
+										cnt++;
+										tx=window.innerWidth;
+										oimg[1].src=url[1];
+										vnn=Math.random()*40+10
+									}
+									odiv[1].style.left=tx+'px';
+									odiv[1].style.bottom=vnn+'px';
+									aspan[0].innerHTML='游戏得分:'+cnt;
+								},16)
+										
+						},y)	
+		}
+	document.onclick=function(ev)
+		{
+			var ev=ev||event;
+			move(amove[0], ev)
+			 setTimeout(function() {
+				move(amove[1], ev)
+			}, 100)
+			setTimeout(function() {
+				move(amove[2], ev)
+			}, 200)
+		}	
+		
+		//当键盘按下的时候	
+		document.onkeydown=function(ev)
+		{
+			arr[ev.keyCode]=true;
+			if(arr[32])
+			{
+				biubiu();	
+			}
+			if(arr[13])
+			{
+				fk();	
+			}
+		}	
+		//键盘抬起的时候函数
+		document.onkeyup=function(ev)
+		{
+			arr[ev.keyCode]=false;
+				
+		}
+		//添加函数timer2为，左键，右键，空格键的操作，切还有判断条件
+		timer2=setInterval(function(){
+			if(arr[37])					//左键
+			{
+				game.className="left";
+				cx=game.offsetLeft-6;
+			}
+			if(arr[39])					//右键
+			{
+				game.className="right";
+				cx=game.offsetLeft+6;	
+			}
+			if(cx<0)
+			{
+				cx=0;	
+				game.className="bottom";
+			}else if(cx>window.innerWidth-game.offsetWidth)
+			{
+				cx=window.innerWidth-game.offsetWidth;
+				game.className="bottom";	
+			}
+			if(arr[38])				//空格键
+			{
+				game.className="top";
+				speed=-Math.abs(speed);
+			}
+			cy=game.offsetTop+speed;
+			if ( cy> window.innerHeight - game.offsetHeight ) {
+				
+				cy = window.innerHeight - game.offsetHeight;
+			}
+			if(cy<window.innerHeight-3*game.offsetHeight)
+			{
+				cy=window.innerHeight-3*game.offsetHeight;
+				game.className="fly";				
+				speed=Math.abs(speed);
+			}	
+			var odx=odiv[0].offsetLeft;
+			var ody=odiv[0].offsetTop;
+			var odw=odiv[0].offsetWidth;
+			var adx=odiv[1].offsetLeft;
+			var ady=odiv[1].offsetTop;
+			var adw=odiv[1].offsetWidth;
+			if(cx<odx||cx>odx+odw||cy<ody)
+			{}else
+			{
+				game.className="bottom";
+				clearInterval(timers);	
+				clearInterval(timer2);
+				clearInterval(timers1);
+				alert("game over");
+			}
+			if(cx<adx||cx>adx+odw||cy<ady)
+			{}else
+			{
+				game.className="bottom";
+				clearInterval(timers1);	
+				clearInterval(timer2);
+				clearInterval(timers)
+				alert("game over");
+			}	
+			game.style.left=cx+'px';
+			game.style.top=cy+'px';	
+			
+		},16)
+			
+			//添加函数，为按上键发出的子弹
+			function biubiu()
+			{
+				var ses=null;
+				var biu= document.createElement('div');
+                biu.className = 'biu';
+				var gamebox = game.getBoundingClientRect();
+                document.body.appendChild(biu);
+				biu.style.left=gamebox.left+game.offsetWidth/2-biu.offsetWidth/2+'px';
+				biu.style.top=gamebox.top+game.offsetHeight/2-biu.offsetHeight/2+'px';
+				var speed=Math.random()*10+10;		//子弹飞出的速度，随机的
+				if(game.className=='left')
+				{
+					speed=-speed;				//在left和top的时候，子弹的速度为负数
+				}
+				ses=setInterval(function(){
+						var oth=biu.offsetLeft;
+						if(oth>window.innerWidth)
+						{
+							clearInterval(ses);
+						}
+						biu.style.left=oth+speed+'px';		//建立定时器，子弹不断的飞出
+						var odx=odiv[0].offsetLeft;
+						var ody=odiv[0].offsetTop;
+						var odh=odiv[0].offsetHeight;
+						var adx=odiv[1].offsetLeft;
+						var ady=odiv[1].offsetTop;
+						var adh=odiv[1].offsetHeight;
+						var opx=biu.offsetLeft;
+						var opy=biu.offsetTop;
+						if(opx>odx&&opy>ody)
+						{
+							csn++;
+							clearInterval(ses);
+							ox=window.innerWidth;
+							biu.style.display="none";
+							oimg[0].src=url[3];	
+						}
+						if(opx>adx&&opy>ady)
+						{
+							csn++;
+							clearInterval(ses);
+							tx=window.innerWidth;
+							biu.style.display="none";
+							oimg[1].src=url[4];
+						}
+						aspan[1].innerHTML='消灭几个:'+csn;
+					},16)
+			}
+			
+			
+			
+			//此为水波纹的封装函数
+		function move(obj, e) {
+                obj.style.display = 'block';
+
+                var w = 0;		//宽
+                var h = 0;		//高
+                var o = 100;	//透明度
+                var timer3 = setInterval(function() {
+                    obj.style.width = (w+=4) + 'px';
+                    obj.style.height = (h+=4) + 'px';
+                    obj.style.opacity = (o-=4) / 100;
+                    obj.style.left = e.clientX - obj.offsetWidth / 2 + 'px';
+                    obj.style.top = e.clientY - obj.offsetHeight / 2 + 'px';
+                    if ( o <= 0 ) {
+                        clearInterval(timer3);
+                    }
+                }, 16);
+            }
+}
+	
+</script>
+</head>
+
+<body>
+<div id="gametext">
+	
+	<h3>游戏规则：</h3>
+    <p>
+    	1.按上键为跳跃，可持续跳跃；<br/>
+        2.按左键为往左跑;<br/>
+        3.按右键为往右跑；<br/>
+        4.按空格键为放子弹;<br/>
+        5.点击按钮或者按下enter键开始游戏；<br/>
+        6.游戏得分为跳过几个障碍物；<br/>
+        7.消灭几个为子弹击中的个数。
+    </p>
+</div>
+<div id="start">游戏开始</div>
+<span class="mean">游戏得分:</span>
+<span class="mean">消灭几个:</span>
+<div id="game" class="bottom"></div>
+<div id="move">
+	<div class="move1"></div>
+    <div class="move1"></div>
+    <div class="move1"></div>
+</div>
+<div id="gameshow">
+	<div>
+    	<img src="img2/gama1.png" />
+    </div>
+    <div>
+    	<img src="img2/game2.png" />
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>鞠加斌的简历</title>
+        <base target="_blank" >
+		<link href="css/index.css" rel="stylesheet"/>
+		<link href="css/reset.css" rel="stylesheet" />
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/peter.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/html5shiv.js"></script>
+        <style id="css">
+			.jianjie{overflow:hidden;zoom:1;}
+			.oh{overflow:hidden;zoom:1;margin:20px ;}
+        	#picList{width:796px;height:360px;float:left;
+				perspective:800px;
+				-ms-perspective:800px;
+				-moz-perspective:800px; 
+				-webkit-perspective:800px;
+			} 
+			#picList li{width:25px;height:360px;float:left;
+				 position:relative; background-size:cover;
+				 transform-style:preserve-3d;transform-origin:center center -180px;
+				 -ms-transform-style:preserve-3d;-ms-transform-origin:center center -180px;
+				 -moz-transform-style:preserve-3d; -moz-transform-origin:center center -180px;
+				 -webkit-transform-style:preserve-3d; -webkit-transform-origin:center center -180px;
+			}
+			#picList a{width:100%;height:100%; position:absolute;left:0;top:0;}
+			#picList li a:nth-of-type(1){ background:url(img/1.jpg) no-repeat;z-index:99;}
+			#picList li a:nth-of-type(2){ background:url(img/4.jpg) no-repeat; top:-360px;
+				transform-origin:bottom;transform:rotateX(90deg); 
+				-ms-transform-origin:bottom;-ms-transform:rotateX(90deg);
+				-moz-transform-origin:bottom; -moz-transform:rotateX(90deg);
+				-webkit-transform-origin:bottom; -webkit-transform:rotateX(90deg);
+			}
+			#picList li a:nth-of-type(3){ background:url(img/3.jpg) no-repeat;
+				transform:translateZ(-360px) rotateX(180deg);
+				-ms-transform:translateZ(-360px) rotateX(180deg);
+				-moz-transform:translateZ(-360px) rotateX(180deg);
+				-webkit-transform:translateZ(-360px) rotateX(180deg);
+			}
+			#picList li a:nth-of-type(4){ background:url(img/4.jpg) no-repeat; top:360px;
+				 transform-origin:top; transform:rotateX(-90deg);
+				 -ms-transform-origin:top; -ms-transform:rotateX(-90deg);
+				 -moz-transform-origin:top; -moz-transform:rotateX(-90deg);
+				 -webkit-transform-origin:top; -webkit-transform:rotateX(-90deg);
+			}
+			#picList li span{ position:absolute;width:360px;height:360px;background:rgba(0,0,0,0);}
+			#picList li span:nth-of-type(1){
+				transform-origin:left;transform:rotateY(90deg); 
+				-ms-transform-origin:left; -ms-transform:rotateY(90deg);
+				-moz-transform-origin:left; -moz-transform:rotateY(90deg);
+				-webkit-transform-origin:left; -webkit-transform:rotateY(90deg);left:0;  
+			}
+			#picList li span:nth-of-type(2){
+				transform-origin:right; transform:rotateY(-90deg); 
+				-ms-transform-origin:right; -ms-transform:rotateY(-90deg);
+				-moz-transform-origin:right; -moz-transform:rotateY(-90deg);
+				-webkit-transform-origin:right; -webkit-transform:rotateY(-90deg);
+				right:0;
+			}
+			#btns{float:left;margin-left:30px; padding:10px 0;}
+			#btns li{width:44px;height:50px;background:#59626d;color:#fff;
+				padding:2px 6px; border-radius:20px; font: 16px/25px Arial;
+				margin:30px 5px; text-align:center; cursor:pointer;
+			}
+			#btns .active{ background:#ccc;}
+        </style>
+	</head>
+	<body >
+		
+		<div id="wrap">
+			<div id="toup"></div>
+			<section class="up">
+				<div class="upimg">
+						<img src="img/geren.png" class="geren"/>
+						<img src="img/res.png" class="res"/>
+						<li><p class="want"><a href="peterju.doc">点击下载word简历</a></p></li>
+					<mark></mark>
+				</div>
+				<div class="img">
+					<img src="img/me.jpg" />
+				</div>
+				<div class="user">
+					<ul>
+						<li class="upleft">
+							<h3>个人情况</h3>
+							<ul>
+								<li>鞠加斌/ 男/ 26岁</li>
+								<li>学历： 本科</li>
+								<li>毕业院校：台州学院</li>
+								<li>现居住地： 北京</li>
+							</ul>
+						</li>
+						<li class="upcenter">
+							<h3>联系方式</h3>
+							<ul>
+								<li>电话：15967650819</li>
+								<li>QQ： 594161154</li>
+								<li>邮箱： 594161154@qq.com</li>
+								<li>微信：15967650819</li>
+							</ul>
+						</li>
+						<li class="upright">
+							<h3>求职意向</h3>
+							<ul>
+								<li>web工程师/Js代码编写</li>
+								<li>工作地点：北京</li>
+								<li>期望月薪：8K-9K</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="center">
+				<div class="jianjie">
+					<div class="oh">
+                        <ul id="picList">
+                            
+                        </ul>
+                        <ol id="btns">
+                            <li class="active">个人简介</li>
+                            <li>职业技能</li>
+                            <li>自我评价</li>
+                        </ol>
+                    </div>
+				</div>
+			</section>
+			<section class="footer">
+            	<div class="bord">
+                    <h3>作品展示</h3>
+                    <p></p>
+                </div>
+            	<div id='menu'>
+                    <div id='menu_list'>
+                        <a href="game.html">
+                        	<img src="img/run.gif"/>
+                        	<p>run<span><点击图片></span></p>
+                        </a>
+                        <a href="meili/meili.html">
+                        	<img src="img/meilis.jpg"/>
+                        	<p>美丽说<span><点击图片></span></p>
+                        </a>
+                        <a href="T1/T.html">
+                        	<img src="img/t.jpg"/>
+                        	<p>T 官网<span><点击图片></span></p>
+                        </a>
+                    </div>
+                    <div id='home'>
+                    	<span>请点击图片查看</span>
+                    </div>
+                </div>
+			</section>
+			<footer>
+				<div class="weixin"></div>
+				<div class="fot">
+                	Copyright © 2016 <a target='_blank' href='javascript:;'>--鞠加斌(PeterJu)</a>
+                </div>
+			</footer>
+            <div class="peng">
+            	<ol>
+                	<li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+		</div>
+		
+	</body>
+</html>

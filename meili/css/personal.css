@@ -1,0 +1,283 @@
+/* Document CSS of Personal */
+#container_per {
+	width:1200px;
+	margin:10px auto;
+	overflow:hidden;
+}
+#container_per .list_per {
+	width: 108px;
+	padding: 10px 30px 48px 30px;
+	border: 1px solid #e5e5e5;
+	background: #fff;
+	float:left;
+}
+.list_per li {
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+.list_per span {
+	font-size: 12px;
+	color: #666;
+	float: right;
+	font-weight: bold;
+}
+.list_per li a:hover {
+	color: #f69;
+}
+.list_per li dt,.list_per li>a{
+	font-size: 14px;
+	font-weight: bold;
+}
+.list_per li dd{
+	
+}
+.content_per {
+	width: 1016px;
+	margin-left: 14px;
+	float:left;
+}
+.head_per {
+	width: 1020px;
+	height: 140px;
+	background: url() no-repeat;
+}
+.content_per .nav {
+	height: 40px;
+	line-height: 40px;
+}
+.content_per .nav li {
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	float: left;
+	width: 12.2%;
+}
+.content_per .nav .goods {
+	width: 32%;
+}
+.content_per .nav .price {
+	width: 11.7%;
+}
+.content_per .nav .num {
+	width: 6.8%;
+}
+.empty_car {
+	display: inline-block;
+	vertical-align: middle;
+	width: 145px;
+    height: 165px;
+    margin-left: -170px;
+    margin-top: -40px;
+    margin-right: 36px;
+	
+}
+.head_per{
+	 background:url(../img/mimg/userb.jpg) no-repeat;
+	 baskground-size:cover;
+}
+/*优惠*/
+.my_privileges {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 20px;
+}
+#container_per h3{
+	height: 36px;
+	line-height: 36px;
+}
+.content_per .data_line{
+	float: left;
+	width: 0px;
+	height: 30px;
+	margin-top: 35px;
+	margin-left: 7px;
+}
+.my_data .data_per{
+	width: 330px;
+	height: 98px;
+	border: 1px solid #eee;
+	float:left;
+}
+.content_per .data_item {
+	float: left;
+	width: 100px;
+	height: 98px;
+	display: block;
+	text-align: center;
+}
+.content_per .data_item a {
+	float: left;
+	width: 100%;
+	display: inline-block;
+	margin: 0 auto;
+    margin-top: 30px;
+	border: 1px solid #fff;
+}
+.data_item a:hover {
+	color: #f69;
+}
+.content_per .data_item span{
+	display: inline-block;
+	font-size: 18px;
+    height: 21px;
+    margin-bottom: 12px;
+}
+.content_per .data_item p{
+    display: inline-block;
+}
+.my_data .data_per .data_line {
+	border-right: 1px solid #eee;
+}
+.my_data .elem_per {
+	position: relative;
+	width: 680px;
+	height: 98px;
+	border: 1px solid #eee;
+	margin-left: -1px;
+	overflow: hidden;
+	float:left;
+}
+.elem_per .elem_list {
+	width: 1000px;
+}
+.elem_per .data_item {
+	width: 108px;
+}
+.elem_per{
+	height:100px;
+	overflow:hidden;
+}
+.elem_per .to_right {
+	position: absolute;
+	right: 0px;
+	top: 34px;
+	width: 12px;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 3px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: #eee;
+	cursor: pointer;
+}
+/*商品列表*/
+.goods_area {
+	margin-bottom: 20px;
+}
+.goods_area h4{
+	line-height: 28px;
+}
+.goods_list {
+	padding-left: 14px;
+	border-left: 1px solid #ddd;
+	margin-right: -12px;
+}
+.goods_list .desc{
+	line-height: 20px;
+}
+.goods_list .item {
+	width: 144px;
+	margin-right: 12px;
+	padding-top: 0px;
+	display:inline-block;
+	margin-top:16px;
+}
+.goods_list img {
+	width: 100%;
+	height: 100%;
+}
+.goods_list .item a{
+	width: 146px;
+	margin: 0;
+	padding: 0;
+}
+.goods_list .item a:hover{
+	color: #f69;
+}
+.goods_list .item .desc_tit{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.goods_list .price {
+	color: #f69;
+	font-size: 16px;
+	font-weight: bold;
+}
+#container_per .goods_box {
+	padding: 16px 20px;
+	border: 1px solid #eee;
+	overflow:hidden;
+}
+.goods_box h3 span {
+	margin-left: 16px;
+	font-size: 10px;
+	color: #666;
+}
+.goods_area_left .data_item {
+	width: 126px;
+}
+.goods_area_left .deal {
+	width: 678px;
+	border: 1px solid #eee;
+}
+.goods_area .goods_area_left {
+	float: left;
+	width: 678px;
+}
+.goods_list p.nomore {
+	display: block;
+	color: #999;
+	margin-top:20px;
+}
+/* right */
+.goods_area .goods_area_right {
+	float: left;
+	width: 324px;
+	margin-left: 14px;
+}
+.goods_area_right h3 span {
+	margin-left: 14px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.goods_box .shop {
+	margin-right: -30px;
+	
+}
+.goods_box .new_shop {
+	float: left;
+	width: 60px;
+	margin: 0px 17px;
+	line-height: 18px;
+}
+.new_shop a:hover {
+	color: #f69;
+}
+.shop_face {
+	width: 60px;
+	height:60px;
+	border-radius: 30px;
+	background: yellow;
+}
+.goods_box .shop_title {
+	display: inline-block;
+    margin-top: 4px;
+    max-width: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+.goods_box .follow {
+	display: inline-block;
+	width: 60px;
+	height: 18px;
+	text-align: center;
+	border: 1px solid #f69;
+}
+.goods_box .follow:hover {
+	background: #f69;
+	color: #fff;
+}

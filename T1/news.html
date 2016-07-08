@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			'use strict'
+		        if (navigator.userAgent.indexOf("MSIE") > -1) {
+		            var ss = navigator.userAgent.substring(navigator.userAgent.indexOf("MSIE") + 4, navigator.userAgent.indexOf("MSIE") + 9);
+		            console.log(ss)
+		            if (parseInt(ss) < 9) {
+		               //window.location = settingClass.url + "jianguo.html";
+		               alert('浏览器版本太低')
+		               // return false;
+		              // return;
+		            }else{
+		            	console('可以运行')
+		            }
+		        }
+		  
+		</script>
+	</head>
+	<body>
+    <h1>浏览器版本不支持，请使用<span style="color:#096">Chrome浏览器/360浏览器/firefox浏览器</span>或者升级浏览器</h1>
+	</body>
+</html>

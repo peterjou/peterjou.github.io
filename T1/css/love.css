@@ -1,0 +1,184 @@
+body {
+	width: 100%;
+	overflow: hidden;
+}
+.denglu{
+	height:410px;
+	width:434px;
+	border-radius: 16px;
+	border:1px solid #ccc;
+	position:fixed;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-200px;
+	z-index:999;
+	overflow: hidden;
+	background:#fff;
+	display:none;
+}
+.deng-fri{
+	background:#f1f1f1;
+	height:60px;
+	border-bottom:1px solid #d1d1d1;
+	
+}
+.deng-fri p{
+	line-height:60px;
+	font-size:18px;
+	color:#666666;
+	margin-left:36px;
+}
+.close{
+	position:absolute;
+	right:20px;
+	top:16px;
+	font-size:20px;
+	cursor:pointer;
+}
+.tex{
+	position:absolute;
+	width:372px;
+	height:50px;
+	top:100px;
+	left:32px;
+	border:1px solid #dedede;
+	border-radius: 10px;
+}
+.tex span{
+	background:url(../img/denglu.png)no-repeat 0 0;
+	width:50px;
+	height:50px;
+	border-right:1px solid #cccccc;
+	position:absolute;
+	left:0;top:0;
+}
+.tex input{
+	height:50px;
+	width:302px;
+	border:none;
+	line-height:50px;
+	margin-left:54px;
+	padding-left:10px;
+	background:rgba(0,0,0,0);
+	outline:none;
+}
+.pas{
+	position:absolute;
+	width:372px;
+	height:50px;
+	top:170px;
+	left:32px;
+	border:1px solid #dedede;
+	border-radius: 10px;
+}
+.pas span{
+	background:url(../img/denglu.png)no-repeat -46px 0;
+	width:50px;
+	height:50px;
+	border-right:1px solid #cccccc;
+	position:absolute;
+	left:0;top:0;
+}
+.pas input{
+	height:50px;
+	width:302px;
+	border:none;
+	line-height:50px;
+	margin-left:54px;
+	padding-left:10px;
+	background:rgba(0,0,0,0);
+	outline:none;
+}
+.other {
+	position:absolute;
+	width:380px;
+	left:32px;
+	top:230px;
+}
+.other span{
+	color:#cccccc;
+	font-size:12px;
+}
+.other ul{
+	position:absolute;
+	right:0px;
+	top:0px;
+}
+.other ul li{
+	display:inline-block;
+	color:#84a3e3;
+	padding:0 10px;
+}
+.other ul li:nth-child(1){
+	border-right:1px solid #b2b2b0;
+}
+.h-d{
+	position:absolute;
+	left:30px;
+	bottom:78px;
+	width:374px;
+	height:50px;
+	background:#698fdc;
+	border-radius: 12px;
+	cursor:pointer;
+}
+.h-d input{
+	font-size:20px;
+	color:#fff;
+	margin-left:170px;
+	line-height:48px;
+	background:rgba(0,0,0,0);
+	border:none;
+	cursor: pointer;
+	outline:none;
+}
+.deng-la{
+	position:absolute;
+	left:154px;
+	bottom:50px;
+	color:#84a3e3;
+}
+.mark{
+	position:fixed;
+	left:0;padding:0;
+	background:rgba(0,0,0,0.5);
+	z-index:990;
+	display:none;
+}
+nav{
+	background:url(../img/huanxi-img/title.huanxi.png)no-repeat 18px 12px #000;
+	height:50px;
+	overflow: hidden;
+}
+nav .deng{
+	float:right;
+	width:80px;
+	height:28px;
+	border:1px solid #4e5155;
+	border-radius: 8px;
+	margin:10px 20px 0 0;
+	color:#cccccc;
+	text-align: center;
+	line-height:28px;
+}
+section{
+	background:url(../img/huanxi-img/bg.png)repeat-x;
+	width:100%;
+	height:700px;
+	overflow: hidden;
+}
+section ul{
+	width:810px;
+	text-align:center;
+	margin:200px auto;
+}
+section ul li{
+	float:left;
+	width:270px;
+}
+section ul li p{
+	font-size:20px;
+	color:#8b8988;
+	padding-top:24px;
+}
