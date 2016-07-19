@@ -91,6 +91,7 @@ window.onload=function(){
 	oCss.innerHTML+=sCss;
 	aLi=oPicList.children;
 	if(ac.indexOf('Media')!=-1){
+		console.log(oPicList)
 		aBtns[1].style.display="none";	
 	}
 	for(var i=0;i<aBtns.length;i++)
@@ -114,7 +115,6 @@ window.onload=function(){
 						aLi[i].style.WebkitTransform="rotateX(-"+a*90+"deg)";
 					}else if(ac.indexOf('Media')!=-1){
 						aLi[i].style.transform="rotateX(-"+a*90+"deg)";
-						
 					}
 					
 				}	

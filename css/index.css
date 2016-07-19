@@ -7,10 +7,9 @@ body{
 }
 #toup{
 	background: url(../img/toup.png)no-repeat;
-	left:50%;
+	right:15px;
 	bottom:30px;
 	position:fixed;
-	margin-left:560px;
 	z-index:11;
 	height:100px;
 	width:100px;
