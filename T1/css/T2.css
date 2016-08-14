@@ -12,6 +12,10 @@ body {
 	cursor:pointer;
 	z-index:10;
 }
+#denl{
+	position:relative;
+	z-index:99999;
+}
 .denglu{
 	height:410px;
 	width:434px;
@@ -518,6 +522,7 @@ header .sec4 ul{
 	top:0;
 	left:50%;
 	margin-left:-1460px;
+	transition: 0.6s;
 }
 header .sec4 ul li{
 	float:left;

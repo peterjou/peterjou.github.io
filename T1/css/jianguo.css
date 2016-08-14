@@ -13,6 +13,10 @@ body {
 	cursor:pointer;
 	z-index:10;
 }
+#denl{
+	position:relative;
+	z-index:99999;
+}
 .denglu{
 	height:410px;
 	width:434px;
@@ -379,6 +383,7 @@ header .sec1 .sec1-t h4{
 }
 header .sec1 .sec1-t ul{
 	margin:40px auto;
+	
 }
 header .sec1 .sec1-t ul li{
 	display:inline-block;
@@ -386,6 +391,7 @@ header .sec1 .sec1-t ul li{
 	font-size:18px;
 	color:#4b4b4b;
 	padding:0 10px;
+	
 }
 header .sec1 .sec1-t ul li:nth-child(1){
 	border-right:1px solid #4b4b4b;
@@ -398,10 +404,11 @@ header .sec1 .sec1-b ol{
 	text-align: center;
 	margin-top:80px;
 	height:300px;
+	transition: 0.6s;
 }
 header .sec1 .sec1-b li{
 	position:absolute;
-	transition: 0s;
+	cursor:pointer;
 }
 header .sec1 .sec1-b img{
 	width:180px;

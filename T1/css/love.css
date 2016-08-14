@@ -17,6 +17,10 @@ body {
 	background:#fff;
 	display:none;
 }
+#denl{
+	position:relative;
+	z-index:99999;
+}
 .deng-fri{
 	background:#f1f1f1;
 	height:60px;

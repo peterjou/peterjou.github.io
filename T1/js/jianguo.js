@@ -1,5 +1,6 @@
 'use strict'
 window.onload=function(){
+	var ac=navigator.userAgent;
 	if (navigator.userAgent.indexOf("MSIE") > -1) {
         var ss = navigator.userAgent.substring(navigator.userAgent.indexOf("MSIE") + 4, navigator.userAgent.indexOf("MSIE") + 9);
         if (parseInt(ss) < 9) {
@@ -63,7 +64,7 @@ window.onload=function(){
 	var sec2s=document.getElementsByClassName('sec2')[0];
 	var aimg=sec2s.getElementsByTagName('img');
 	var sec4s=document.getElementsByClassName('sec4')[0];
-	var oimg=sec4s.getElementsByTagName('img')
+	var oimg=sec4s.getElementsByTagName('img');
 	var cn1=140;
 	var cn2=240;
 	var cl=160;
@@ -117,7 +118,7 @@ window.onload=function(){
 		}
 	}
 	window.onscroll=function(){
-		if(window.pageYOffset>100){
+		if(window.pageYOffset>200){
 			nav2.style.position='fixed';
 			nav2.style.top='0px';
 			nav2.style.zIndex=99;
@@ -129,8 +130,16 @@ window.onload=function(){
 			oup.style.display='none';
 			removeClass(nav2,'otr');
 			chose.style.display='none';
+			for(var i=0;i<cli.length;i++){
+				removeClass(cli[i],'choli')
+			}
+			addClass(cli[0],'choli');
 		}
-		if(window.pageYOffset>600){
+		if(window.pageYOffset>600&window.pageYOffset<1200){
+			for(var i=0;i<cli.length;i++){
+				removeClass(cli[i],'choli')
+			}
+			addClass(cli[1],'choli');
 			if(dc==1){
 				dc=2;
 				timer1=setInterval(function(){
@@ -147,8 +156,16 @@ window.onload=function(){
 					aimg[2].style.top=cn2+'px';
 				},16)
 			}
-		}
-		if(window.pageYOffset>1800){
+		}else if(window.pageYOffset<1800&window.pageYOffset>1200){
+			for(var i=0;i<cli.length;i++){
+				removeClass(cli[i],'choli')
+			}
+			addClass(cli[2],'choli');
+		}else if(window.pageYOffset>1800){
+			for(var i=0;i<cli.length;i++){
+				removeClass(cli[i],'choli')
+			}
+			addClass(cli[3],'choli');
 			if(oc==1){
 				oc=2;
 				timer2=setInterval(function(){
@@ -169,18 +186,35 @@ window.onload=function(){
 		}
 	}
 	var moves=document.getElementsByClassName('sec1-b')[0];
-	var aul=moves.getElementsByTagName('ol')[0]
-	var ali=moves.getElementsByTagName('li')
-//	winchange();
-//	function winchange(){
-//		for(var i=0;i<ali.length;i++){
-//			ali[i].style.width=window.innerWidth/7+'px';
-//		}
-//	}
-//	window.onresize=function(){
-//		winchange();
-//	}
-//	
+	var aul=moves.getElementsByTagName('ol')[0];
+	var ali=moves.getElementsByTagName('li');
+	var aimgs=aul.getElementsByTagName('img');
+	console.log(aimgs.length)
+	var conoff=false;
+	//鼠标点击后的效果
+	
+	aul.onclick=function(){
+		if(!conoff){
+			if(ac.indexOf('Firefox')!=-1){
+				aul.style.MozTransform='scale(2)';
+			}else if(ac.indexOf('Chrome')!=-1){
+				aul.style.webkitTransform='scale(2)';
+			}else if(ac.indexOf('Media')!=-1){
+				aul.style.transform='scale(2)';
+			}
+			conoff=true;
+		}else{
+			if(ac.indexOf('Firefox')!=-1){
+				aul.style.MozTransform='scale(1)';
+			}else if(ac.indexOf('Chrome')!=-1){
+				aul.style.webkitTransform='scale(1)';
+			}else if(ac.indexOf('Media')!=-1){
+				aul.style.transform='scale(1)';
+			}
+			conoff=false;
+		}	
+	}
+	//鼠标划入的效果
 	aul.onmousemove = function(ev){
 		var ev = ev || window.event;
 		for(var i=0;i<ali.length;i++){
@@ -196,6 +230,7 @@ window.onload=function(){
 			ali[i].style.top = scale * 128-50 + 'px';
 		}	
 	}
+	//鼠标划出的效果
 	aul.onmouseleave=function(){
 		for(var i=0;i<ali.length;i++){
 			ali[i].style.top='';

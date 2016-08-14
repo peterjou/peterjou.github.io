@@ -1,5 +1,7 @@
 'use strict'
 window.onload=function(){
+	//关于用户浏览器版本控制
+	var ac=navigator.userAgent;
 	if (navigator.userAgent.indexOf("MSIE") > -1) {
         var ss = navigator.userAgent.substring(navigator.userAgent.indexOf("MSIE") + 4, navigator.userAgent.indexOf("MSIE") + 9);
         if (parseInt(ss) < 9) {
@@ -20,28 +22,24 @@ window.onload=function(){
 	var login=document.getElementsByClassName('h-d')[0];
 	var form=document.getElementsByTagName('form')[0];
 	var oinp=form.getElementsByTagName('input');
-	
+	//登陆建立cookie
 	login.onclick=function(){
 		setCookie('username', oinp[0].value, 4) 
 		setCookie('password', oinp[1].value , 4) 
 	}
+	//点击登陆按钮
 	den.onclick=function(){
 		denglu.style.display='block';
 		amark.style.display='block';
 		amark.style.width=window.innerWidth+'px';
 		amark.style.height=window.innerHeight+'px';
 	}
+	//关闭按钮
 	close.onclick=function(){
 		denglu.style.display='none';
 		amark.style.display='none';
 	}
-	window.onscroll=function(){
-		if(window.pageYOffset>400){
-			oup.style.display='block';
-		}else{
-			oup.style.display='none';
-		}
-	}
+	//点击up按钮的函数
 	oup.onclick=function(){
 		var t=window.pageYOffset;
 		timer=setInterval(function(){
@@ -58,6 +56,7 @@ window.onload=function(){
 	var sec2=document.getElementsByClassName('sec2-b')[0];
 	var secchid=sec2.getElementsByTagName('div');
 	var dc=1;
+	//滚动条发生改变
 	window.onscroll=function(){
 		if(window.pageYOffset>100){
 			nav2.style.position='fixed';
@@ -69,6 +68,11 @@ window.onload=function(){
 			nav2.style.position='';
 			oup.style.display='none';
 			removeClass(nav2,'otr')
+		}
+		if(window.pageYOffset>400){
+			oup.style.display='block';
+		}else{
+			oup.style.display='none';
 		}
 		if(window.pageYOffset>800){
 			if(dc==1){
@@ -117,6 +121,7 @@ window.onload=function(){
 		}
 		mov.style.backgroundPositionY=n+'px';
 	},16)
+	//鼠标划入sec3图片时，更换图片
 	var sec3b=document.getElementsByClassName('sec3-b')[0];
 	var simg=sec3b.getElementsByTagName('img');
 	simg[0].onmouseenter=function(){
@@ -126,5 +131,29 @@ window.onload=function(){
 	simg[1].onmouseleave=function(){
 		simg[0].style.display='block';
 		simg[1].style.display='none';
+	}
+	
+	//关于底部图片，鼠标划入效果
+	var sec4=document.getElementsByClassName('sec4')[0];
+	var sul=sec4.getElementsByTagName('ul')[0];
+	sul.onmouseenter=function(){
+		console.log(1)
+		if(ac.indexOf('Firefox')!=-1){
+			sul.style.MozTransform='scale(0.6)';
+		}else if(ac.indexOf('Chrome')!=-1){
+			sul.style.webkitTransform='scale(0.6)';
+		}else if(ac.indexOf('Media')!=-1){
+			sul.style.transform='scale(0.6)';
+		}
+	}
+	//sec4鼠标划入效果
+	sul.onmouseleave=function(){
+		if(ac.indexOf('Firefox')!=-1){
+			sul.style.MozTransform='scale(1)';
+		}else if(ac.indexOf('Chrome')!=-1){
+			sul.style.webkitTransform='scale(1)';
+		}else if(ac.indexOf('Media')!=-1){
+			sul.style.transform='scale(1)';
+		}
 	}
 }
