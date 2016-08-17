@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi=device-dpi" />
+		<title>boot</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+        <script>
+        	var xx,yy,XX,YY,swipeX,swipeY ;
+			 document.addEventListener('touchstart',function(event){
+				 xx = event.targetTouches[0].screenX ;
+				 yy = event.targetTouches[0].screenY ;
+				 swipeX = true;
+				 swipeY = true ;
+			 })
+			 document.addEventListener('touchmove',function(event){
+				  XX = event.targetTouches[0].screenX ;
+				  YY = event.targetTouches[0].screenY ;
+				  if(swipeX && Math.abs(XX-xx)-Math.abs(YY-yy)>0)  //左右滑动
+				  {
+					  event.stopPropagation();//组织冒泡
+					  event.preventDefault();//阻止浏览器默认事件
+					  swipeY = false ;
+					  //左右滑动
+				  }
+				  else if(swipeY && Math.abs(XX-xx)-Math.abs(YY-yy)<0){  //上下滑动
+					  swipeX = false ;
+					  //上下滑动，使用浏览器默认的上下滑动
+				  }
+			  })
+        </script>
+		<style>
+			*{margin:0;padding:0;}
+			li{list-style:none;}
+			.ahig{min-height:50px;}
+			.pos{position:relative;}
+			.clos{color:#d9534f !important;position:absolute;right:0;top:18px;}
+			header{min-height:574px;border-bottom:1px solid #dadada;background:#f5f5f5}
+			.linears{ height:520px;
+				background: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#020031),color-stop(100%,#6d3353));
+			}
+			.header-bg{
+					height:100%;
+					width:100%;
+					background: url(img/header-bg.png) repeat center center;
+			}
+			.containchange{
+				text-align: center;
+				color:#fff;
+				padding-top:130px;
+			}
+			.containchange h1{
+				font-size:50px;
+				line-height:100px;
+			}
+			.containchange h2{
+				font-size:20px;
+				line-height:40px;
+				font-weight:300;
+			}
+			.containchange>a{
+				margin:20px 0;
+			}
+			.containchange ul {
+				margin-top:10px;
+			}
+			.containchange ul li{
+				display:inline-block;
+				padding-right:10px;
+				color:#64526c;
+			}
+			.containchange ul li a{
+				color:#91879a;
+			}
+			.header-ft{text-align:center;height:50px;}
+			.header-ft li{display:inline-block;line-height:50px;padding:0 0 0 10px;}
+			.header-ft li a{color:#0088cc;font-size:14px;padding:0 10px 0 0;}
+			.cen{
+				text-align:center;
+			}
+			.cont-text{
+				text-align:center;
+				display:inline-block;
+				padding:40px 20px 14px 90px;
+			}
+			.cont-text h3{
+				font-size:32px;
+				color:#333333;
+				line-height:70px;
+			}
+			.cont-text p{
+				font-size:20px;
+				line-height:36px;
+				color:#999999;
+			}
+			.box{
+				margin-top:20px;
+				text-align:center !important;
+				padding-bottom:20px;
+			}
+			.box img{
+				width:300px;
+				height:145px;
+			}
+			.box h3{
+				font-size:30px;
+				color:#5a5a5a;
+				line-height:40px;
+			}
+			.box p{
+				font-size:16px;
+				line-height:24px;
+				color:#5a5a5a;
+			}
+			.box p a{
+				color:#0088cc;
+			}
+			.cnc{
+				margin-top:-20px;
+			}
+			.box2{
+				margin:10px 0 100px 0
+			}
+			.box2 li{
+				margin-top:20px;
+			}
+			.box2 img{
+				padding:4px;
+				border:1px solid #e5e5e5;
+				border-radius:4px;
+				width:210px;
+				height:158px;
+			}
+			footer{
+				width:100%;
+				background:#f5f5f5;
+				padding:30px 0;
+				text-align:center;
+			}
+			footer li{
+				display:inline-block;
+			}
+			.toup{
+				position:fixed;
+				right:20px;
+				bottom:30px;
+				border:none;
+				display:block;
+				background:#999 !important;
+				display:none;
+				z-index:99;
+				cursor:pointer;
+			}
+			.toup span{
+				display:block;
+				padding:8px 8px;
+				font-size:20px;
+				color:#fff;
+			}
+			@media all and (min-width: 720px)
+			{
+				.cont-text h3
+				{
+					font-size:56px;
+				}
+				.containchange h1{
+					font-size:80px;
+				}
+				.containchange h2{
+					font-size:30px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+    	<button class="toup">
+        	<span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+		<!-- 导航条部分 -->
+		<nav class="navbar navbar-inverse navbar-fixed-top ahig">
+			<div class="container">
+				<!--
+                	作者：594161154@qq.com
+                	描述：导航条头部信息头，包括logo以及btn
+                -->
+				<div class="navbar-header" >
+					
+					<button class="navbar-toggle"  data-toggle="collapse" data-target="#hide">			           
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			        </button>
+		        </div>
+		        <!--
+                	作者：594161154@qq.com
+                	描述：此为内容简介部分，根据不同的px进行处理，以及加入collapse
+                -->
+		        <div class="navbar-collapse collapse"  id="hide">
+		        	<ul class="nav navbar-nav ">
+			        	<li ><a href="index.html">首页</a></li>
+			        	<li><a href="javascript:;">起步</a></li>
+			        	<li><a href="javascript:;">脚手架</a></li>
+			        	<li><a href="javascript:;">基本CSS样式</a></li>
+			        	<li><a href="javascript:;">组件</a></li>
+			        	<li><a href="javascript:;">JavaScript插件</a></li>
+			        	<li><a href="javascript:;">定制</a></li>
+			        	<li><a href="javascript:;">网站实例</a></li>
+			        </ul>
+		        </div>
+			</div>
+		</nav>
+		<!--
+        	作者：594161154@qq.com
+        	描述：header头部分，主要展示图片处
+        -->
+		<header>
+			<div class="linears">
+				<div class="header-bg">
+					<div class="container containchange">
+						<h1>Bootstrap</h1>
+						<h2>简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</h2>
+						<a class="btn btn-lg btn-primary btn-shadow" href="download.html" >
+						 	下载Bootstrap
+						</a>
+						<br>
+						<ul class="masthead-links">
+						    <li>
+						        <a href="javascript:;" >GitHub project</a>
+						    </li>
+						    <li>
+						        <a href="javascript:;" >案例</a>
+						    </li>
+						    <li>
+						        <a href="javascript:;" >扩展</a>
+						    </li>
+						    <li>
+						        Version 2.3.2
+						    </li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+			<div class="header-ft">
+				<ul>
+					<li>
+						<a href="javascript">
+							Bootstrap v3 中文文档
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+        <!--
+        	作者：594161154@qq.com
+        	描述：
+        -->
+        <section class="container cen">
+        	<div class="cont-text">
+        		<h3>Bootstrap介绍。</h3>
+        		<p>需要为爱上Bootstrap找N多理由吗？ 就在眼前。</p>
+        	</div>
+        	<ul class="row box">
+        		<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+        			<img src="img/list-bg.png" />
+			        <h3>人人为我，我为人人。</h3>
+			        <p>由
+			        	<a href="javascript:;">@mdo</a> 和 <a href="javascript:;">@fat</a> 
+			        	在Twitter工作时创建，Bootstrap使用 
+			        	<a href="javascript:;">LESS CSS</a> 并用 
+			        	<a href="javascript:;">Node</a> 编译，托管在 
+			        	<a href="javascript:;">GitHub</a> 
+			        	上，方便大家使用这一框架构建更好的web应用。
+			        </p>
+			    </li>
+			    <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+			        <img src="img/list-bg.png" />
+			        <h3>任何人都可以使用。</h3>
+			        <p>Bootstrap不光为了看起来好看，而且在现代的桌面浏览器上有极佳的表现(包括IE7！)。在平板电脑和智能手机上面还有 
+			        	<a href="javascript:;">响应式CSS</a> 可以使用。
+			        </p>
+			    </li>
+			    <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+			        <img src="img/list-bg.png" />
+			        <h3>丰富的特色。</h3>
+			        <p>12列的响应式
+			        	<a href="javascript:;">栅格结构</a>、丰富的组件、
+			        	<a href="javascript:;">JavaScript插件</a>、排版、表单控件,还有 
+			        	<a href="javascript:;">基于web的定制工具</a>。
+			        </p>
+			    </li>
+        	</ul>
+        	<hr>
+        	<div class="cont-text cnc">
+        		<h3>基于Bootstrap构建的网站。</h3>
+	        	<p>更多基于Bootstrap构建的网站列表，请访问 
+	        		<a href="javascript:;">优站精选</a> 或者 
+	        		<a href="javascript:;">看看下面的几个案例</a>。
+	        	</p>
+	        </div>
+	        <ul class="row box2">
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/list-bg2.jpg" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/list-bg2.jpg" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/list-bg2.jpg" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/list-bg2.jpg" />
+	        	</li>
+	        </ul>
+        </section>
+        <!--
+        	作者：594161154@qq.com
+        	描述：footer
+        -->
+        <footer>
+        	 <div class="container">
+		        <p>Designed and built with all the love in the world by <a href="javascript:;">@mdo</a> and <a href="javascript:;">@fat</a>.</p>
+		        <p>Code licensed under <a href="javascript:;">Apache License v2.0</a>, documentation under <a href="javascript:;">CC BY 3.0</a>.</p>
+		        <p><a href="javascript:;">Glyphicons Free</a> licensed under <a href="javascript:;">CC BY 3.0</a>.</p>
+		        <ul class="footer-links">
+		            <li><a href="javascript:;">Blog</a></li>
+		            <li class="muted">&middot;</li>
+		            <li><a href="javascript:;">Issues</a></li>
+		            <li class="muted">&middot;</li>
+		            <li><a href="javascript:;">Changelog</a></li>
+		        </ul>
+		    </div>
+        </footer>
+	</body>
+    <script>
+    	var toup=document.getElementsByClassName('toup')[0];
+        window.onscroll=function(){
+        	uplist();
+        }
+        uplist();
+        //为toup按钮自动显示的封装函数
+        function uplist(){
+        	var top=window.pageYOffset;
+            if(top>400){
+            	toup.style.display='block';
+            }else{
+            	toup.style.display='none';
+            }
+        }
+        //点击按钮自动滑倒顶部
+        var onoff=false;
+        toup.onclick=function(){
+        	if(onoff) return;
+       		onoff=true
+        	var top=window.pageYOffset;
+           	var timer=null;
+            timer=setInterval(function(){
+            	top-=36;
+                if(top<=0){
+                onoff=false;
+                	top=0;
+                    clearInterval(timer)
+                }
+                window.scrollTo(0,top)
+            },16)
+        }
+    </script>
+</html>

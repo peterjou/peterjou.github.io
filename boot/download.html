@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi=device-dpi" />
+		<title>boot</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+         <script>
+        	var xx,yy,XX,YY,swipeX,swipeY ;
+			 document.addEventListener('touchstart',function(event){
+				 xx = event.targetTouches[0].screenX ;
+				 yy = event.targetTouches[0].screenY ;
+				 swipeX = true;
+				 swipeY = true ;
+			 })
+			 document.addEventListener('touchmove',function(event){
+				  XX = event.targetTouches[0].screenX ;
+				  YY = event.targetTouches[0].screenY ;
+				  if(swipeX && Math.abs(XX-xx)-Math.abs(YY-yy)>0)  //左右滑动
+				  {
+					  event.stopPropagation();//组织冒泡
+					  event.preventDefault();//阻止浏览器默认事件
+					  swipeY = false ;
+					  //左右滑动
+				  }
+				  else if(swipeY && Math.abs(XX-xx)-Math.abs(YY-yy)<0){  //上下滑动
+					  swipeX = false ;
+					  //上下滑动，使用浏览器默认的上下滑动
+				  }
+			  })
+        </script>
+		<style>
+			*{margin:0;padding:0}
+			li{list-style:none;}
+			header{
+				background:#644a8c;
+				height:560px;
+				width:100%;
+				text-align:center;
+				overflow:hidden;
+			}
+			header div{
+				margin-top:100px;
+			}
+			header span{
+				display:inline-block;
+				border:1px solid #cdbfe3;
+				color:#ffffff;
+				font-size:80px;
+				height:128px;
+				width:128px;
+				line-height:128px;
+				border-radius:14px;
+				font-weight: bold;
+			}
+			header .showtext{
+				font-size:26px;
+				line-height:36px;
+				color:#ffffff;
+				margin:24px auto 0;
+				width:80%;
+			}
+			header a{
+				margin-top:14px;
+			}
+			header .banben{
+				line-height:40px;
+				color:#9783b9;
+			}
+			.cen{
+				text-align:center;
+			}
+			.cont-text{
+				text-align:center;
+				display:inline-block;
+				padding:40px 20px 14px 90px;
+			}
+			.cont-text h3{
+				font-size:40px;
+				color:#333333;
+				line-height:70px;
+			}
+			.cont-text p{
+				font-size:20px;
+				line-height:36px;
+				color:#999999;
+			}
+			.box{
+				margin-top:20px;
+				text-align:center !important;
+				padding-bottom:20px;
+			}
+			.box img{
+				width:300px;
+				height:145px;
+			}
+			.box h3{
+				font-size:30px;
+				color:#5a5a5a;
+				line-height:40px;
+			}
+			.box p{
+				font-size:16px;
+				line-height:24px;
+				color:#5a5a5a;
+			}
+			.box p a{
+				color:#0088cc;
+			}
+			.cnc{
+				margin-top:-20px;
+			}
+			.box2{
+				margin:10px 0 100px 0
+			}
+			.box2 li{
+				margin-top:20px;
+			}
+			.box2 img{
+				padding:4px;
+				border:1px solid #e5e5e5;
+				border-radius:4px;
+				width:260px;
+			}
+			.libottom {
+				margin-bottom:60px;
+			}
+			.libottom p{
+				font-size:18px;
+				line-height:44px;
+				color:#555555;
+				margin-bottom:10px;
+			}
+			.libottom a{
+				padding:10px 16px;
+				color:#563d7c;
+				border:1px solid #563d7c;
+				font-size:14px;
+				border-radius:8px;
+				text-decoration: none;
+			}
+			.libottom a:hover{
+				background:#563d7c;
+				color:#fff;
+			}
+			.cens{
+				width:100px;
+				margin:0 auto 30px;
+			}
+			footer{
+				text-align:center;
+				padding:34px 0;
+				margin-top:100px;
+				border-top:1px solid #e5e5e5;
+				font-size:12px;
+				color:#767676;
+				line-height:18px;
+			}
+			footer li{
+				display:inline-block;
+				margin-right:5px;
+			}
+			footer a{
+				color:#337ab7;
+			}
+			.toup{
+				position:fixed;
+				right:20px;
+				bottom:30px;
+				border:none;
+				display:block;
+				background:#999 !important;
+				display:none;
+				z-index:99;
+				cursor:pointer;
+			}
+			.toup span{
+				display:block;
+				padding:8px 8px;
+				font-size:20px;
+				color:#fff;
+			}
+			@media all and (min-width: 720px)
+			{
+				.cont-text h3
+				{
+					font-size:56px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+    	<button class="toup">
+        	<span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+		<!-- 导航条部分 -->
+		<nav class="navbar navbar-inverse navbar-fixed-top ahig">
+			<div class="container">
+				<!--
+                	作者：594161154@qq.com
+                	描述：导航条头部信息头，包括logo以及btn
+                -->
+				<div class="navbar-header" >
+					<a href="index.html" class="navbar-brand ">Bootstrap</a>
+					<button class="navbar-toggle"  data-toggle="collapse" data-target="#hide">			           
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			        </button>
+		        </div>
+		        <!--
+                	作者：594161154@qq.com
+                	描述：此为内容简介部分，根据不同的px进行处理，以及加入collapse
+                -->
+		        <div class="navbar-collapse collapse"  id="hide">
+		        	<ul class="nav navbar-nav ">
+			        	<li><a href="list.html">起步</a></li>
+			        	<li><a href="href="list.html">全局 CSS 样式</a></li>
+			        	<li><a href="list.html">组件</a></li>
+			        	<li><a href="list.html">JavaScript 插件</a></li>
+			        	<li><a href="list.html">定制</a></li>
+			        	<li><a href="list.html">网站实例</a></li>
+			        </ul>
+			        <ol class="nav navbar-nav navbar-right hidden-sm">
+			        	<li>
+			        		<a href="index.html">Bootstrap中文网</a>
+			        	</li>
+			        </ol>
+		        </div>
+			</div>
+		</nav>
+		<!--
+        	作者：594161154@qq.com
+        	描述：header头部分，主要展示图片处
+        -->
+		<header>
+			<div class="container">
+				<span>B</span>
+				<p class="showtext">Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。</p>
+				<a class="btn btn-lg btn-primary btn-shadow" href="javascript:;" >
+				 	下载Bootstrap
+				</a>
+				<p class="banben">当前版本： v3.3.5 | 文档更新于：2015-06-22</p>
+			</div>
+		</header>
+		<!--
+        	作者：594161154@qq.com
+        	描述：section 中心内容部分
+        -->
+		<section class="container cen">
+        	<div class="cont-text">
+        		<h3>为所有开发者、所有应用场景而设计。</h3>
+        		<p>Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。</p>
+        	</div>
+        	 <hr class="cens">
+        	<ul class="row box">
+        		<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+        			<img src="img/down-bg1.png" />
+			        <h3>预处理脚本</h3>
+			         <p>
+			         	虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - 
+			         	<a href="javascript:;">Less</a> 和 
+			         	<a href="javascript:;">Sass</a> 
+			         	开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。
+			        </p>
+			    </li>
+			    <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+        			<img src="img/down-bg1.png" />
+			        <h3>预处理脚本</h3>
+			         <p>
+			         	虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - 
+			         	<a href="javascript:;">Less</a> 和 
+			         	<a href="javascript:;">Sass</a> 
+			         	开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。
+			        </p>
+			    </li>
+			    <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+        			<img src="img/down-bg1.png" />
+			        <h3>预处理脚本</h3>
+			         <p>
+			         	虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - 
+			         	<a href="javascript:;">Less</a> 和 
+			         	<a href="javascript:;">Sass</a> 
+			         	开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。
+			        </p>
+			    </li>
+        	</ul>
+        	 <hr class="cens">
+        	<div class="libottom">
+        		<p >Bootstrap 是完全开源的。它的代码托管、开发、维护都依赖 GitHub 平台。</p>
+   		 		<a href="javascript:;">查看 GitHub 项目主页</a>
+        	</div>
+        	
+        	<hr>
+        	
+        	<div class="cont-text cnc">
+        		<h3>基于Bootstrap构建的网站。</h3>
+	        	<p>全球数以百万计的网站都是基于 Bootstrap 构建的。你可以先参观一下我们提供的
+	        		<a href="javascript:;">实例精选</a>
+	        		或者看一看我们粉丝的网站吧。
+	        	</p>
+	        </div>
+	         <hr class="cens">
+	        <ul class="row box2">
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/down-bg2.png" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/down-bg2.png" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/down-bg2.png" />
+	        	</li>
+	        	<li class="col-lg-3 col-md-3 col-sm-6">
+	        		<img src="img/down-bg2.png" />
+	        	</li>
+	        </ul>
+	        <hr class="cens">
+	        <div class="libottom">
+        		<p >我们在“优站精选”里展示了许多精美的 Bootstrap 网站。</p>
+   		 		<a href="javascript:;">逛一逛“优站精选”</a>
+        	</div>
+        </section>
+        <!--
+        	作者：594161154@qq.com
+        	描述：footer
+        -->
+        <footer>
+        	<div class="container">
+        		 <p>
+        		 	Designed and built with all the love in the world by 
+        		 	 <a href="javascript:;">@mdo</a> and 
+        		 	 <a href="javascript:;">@fat</a>.
+        		 </p>
+			    <p>
+			    	Maintained by the 
+			    	<a href="javascript:;">core team</a> 
+			    	with the help of 
+			    	<a href="javascript:;">our contributors</a>.
+			    </p>
+			    <p>
+			    	本项目源码受 
+			    	<a href="javascript:;">MIT</a>
+			    	开源协议保护，文档受 
+			    	<a href="javascript:;">CC BY 3.0</a> 
+			    	开源协议保护。
+			    </p>
+			    <ul>
+			      <li>当前版本： v3.3.5</li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">GitHub 仓库</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">实例精选</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">v2.3.2 中文文档</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">关于</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">优站精选</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">官方博客</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">Issues</a></li>
+			      <li>&middot;</li>
+			      <li><a href="javascript:;">历史版本</a></li>
+			    </ul>
+        	</div>
+        </footer>
+	</body>
+    <script>
+    	var toup=document.getElementsByClassName('toup')[0];
+        window.onscroll=function(){
+        	uplist();
+        }
+        uplist();
+        //为toup按钮自动显示的封装函数
+        function uplist(){
+        	var top=window.pageYOffset;
+            if(top>400){
+            	toup.style.display='block';
+            }else{
+            	toup.style.display='none';
+            }
+        }
+        //点击按钮自动滑倒顶部
+        var onoff=false;
+        toup.onclick=function(){
+        	if(onoff) return;
+       		onoff=true
+        	var top=window.pageYOffset;
+           	var timer=null;
+            timer=setInterval(function(){
+            	top-=36;
+                if(top<=0){
+                onoff=false;
+                	top=0;
+                    clearInterval(timer)
+                }
+                window.scrollTo(0,top)
+            },16)
+        }
+    </script>
+</html>

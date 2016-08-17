@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,user-scalable=no,target-densitydpi=device-dpi" />
+		<title>boot</title>
+		
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		  <script>
+        	var xx,yy,XX,YY,swipeX,swipeY ;
+			 document.addEventListener('touchstart',function(event){
+				 xx = event.targetTouches[0].screenX ;
+				 yy = event.targetTouches[0].screenY ;
+				 swipeX = true;
+				 swipeY = true ;
+			 })
+			 document.addEventListener('touchmove',function(event){
+				  XX = event.targetTouches[0].screenX ;
+				  YY = event.targetTouches[0].screenY ;
+				  if(swipeX && Math.abs(XX-xx)-Math.abs(YY-yy)>0)  //左右滑动
+				  {
+					  event.stopPropagation();//组织冒泡
+					  event.preventDefault();//阻止浏览器默认事件
+					  swipeY = false ;
+					  //左右滑动
+				  }
+				  else if(swipeY && Math.abs(XX-xx)-Math.abs(YY-yy)<0){  //上下滑动
+					  swipeX = false ;
+					  //上下滑动，使用浏览器默认的上下滑动
+				  }
+			  })
+        </script>
+		<style>
+			*{margin:0;padding:0;}
+			li{list-style:none;}
+			.ahig{min-height:50px;}
+			.pos{position:relative;}
+			.clos{color:#d9534f !important;position:absolute;right:0;top:18px;}
+			header{min-height:574px;width:100%;border-bottom:1px solid #dadada;background:#f5f5f5}
+			.linears{ height:520px;
+				background: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#020031),color-stop(100%,#6d3353));
+			}
+			.header-bg{
+					height:100%;
+					width:100%;
+					background: url(img/header-bg.png) repeat center center;
+			}
+			.containchange{
+				text-align: center;
+				color:#fff;
+				padding-top:130px;
+			}
+			.containchange h1{
+				font-size:50px;
+				line-height:100px;
+			}
+			.containchange h2{
+				font-size:20px;
+				line-height:40px;
+				font-weight:300;
+			}
+			.containchange a:nth-of-type(1){
+				margin:20px 0;
+			}
+			.containchange a:nth-of-type(2){
+				font-size:10px;
+				line-height:30px;
+				color:#928798;
+			}
+			.header-ft{text-align:center;min-height:54px;}
+			.header-ft li{display:inline-block;line-height:54px;padding:0 0 0 10px;}
+			.header-ft li a{border-right:3px solid #d7cecc;color:#555555;font-size:14px;padding:0 10px 0 0;line-height:20px;}
+			.header-ft .head-last{
+				border:none;
+			}
+			.cen{
+				text-align:center;
+			}
+			.cont-text{
+				text-align:center;
+				display:inline-block;
+				padding:40px 90px 14px 90px;
+				border-bottom:1px solid #eeeeee;
+			}
+			.cont-text h3{
+				font-size:42px;
+				color:#333333;
+				line-height:56px;
+			}
+			.cont-text p{
+				font-size:14px;
+				line-height:24px;
+				color:#333333;
+			}
+			.sec-top{
+				margin-top:20px;
+				padding:0 15px !important;
+				width:280px;
+				display:inline;
+				float:none;
+			}
+			.thumbnail{
+				width:260px;
+				display:inline-block;
+			}
+			.con-hg{
+				height:200px !important;
+			}
+			.box{
+				margin-top:20px;
+				text-align:center !important;
+			}
+			.box h3{
+				color:#337ab7;
+			}
+			.box h4{
+				color:#77777f;
+			}
+			.box p{
+				color:#555555;
+				font-size:14px;
+				line-height:20px;
+			}
+			footer{
+				margin-top:100px;
+				width:100%;
+				border-top:1px solid #e5e5e5;
+				padding:30px 0;
+			}
+			.footer-row{
+				padding-bottom:20px;
+				border-bottom:1px solid #e5e5e5;
+			}
+			.footer-l img{
+				width:240px;height:40px;
+				
+				display:block;
+			}
+			.footer-l p{
+				line-height:20px;
+				font-size:14px;
+				color:#777777;
+				margin-top:20px;
+			}
+			.footer-l p a{
+				color:#777777;
+			}
+			
+			.footer-r h4{
+				color:#563d7c;
+				font-size:16px;
+				line-height:30px;
+			}
+			.footer-r a{
+				color:#777777;
+				font-size:14px;
+				line-height:20px;
+			}
+			.footer-last{
+				text-align:center;
+			}
+			.footer-last ul{
+				
+			}
+			.footer-last ul li{
+				display:inline-block;
+				line-height:50px;
+				font-size:12px;
+				color:#777777;
+				padding-left:10px;
+			}
+			.footer-last ul li a{
+				color:#777;
+				padding-right:10px;
+				line-height:16px;
+				border-right:2px solid #e5e5e5;
+				display:inline-block;
+			}
+			.toup{
+				position:fixed;
+				right:20px;
+				bottom:30px;
+				border:none;
+				display:block;
+				background:#999 !important;
+				display:none;
+				z-index:99;
+				cursor:pointer;
+			}
+			.toup span{
+				display:block;
+				padding:8px 8px;
+				font-size:20px;
+				color:#fff;
+			}
+			@media all and (min-width: 720px)
+			{
+				.cont-text h3
+				{
+					font-size:56px;
+				}
+				.containchange h1{
+					font-size:80px;
+				}
+				.containchange h2{
+					font-size:30px;
+				}
+				.footer-r{
+					padding-left:110px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+    	<button class="toup">
+        	<span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+		<!-- 导航条部分 -->
+		<nav class="navbar navbar-inverse navbar-fixed-top ahig">
+			<div class="container">
+				<!--
+                	作者：594161154@qq.com
+                	描述：导航条头部信息头，包括logo以及btn
+                -->
+				<div class="navbar-header" >
+					<a href="index.html" class="navbar-brand hidden-md hidden-sm">Bootstrap中文网</a>
+					<button class="navbar-toggle"  data-toggle="collapse" data-target="#hide">			           
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			        </button>
+		        </div>
+		        <!--
+                	作者：594161154@qq.com
+                	描述：此为内容简介部分，根据不同的px进行处理，以及加入collapse
+                -->
+		        <div class="navbar-collapse collapse"  id="hide">
+		        	<ul class="nav navbar-nav ">
+			        	<li class="hidden-sm hidden-md"><a href="list.html">Bootstrap2中文文档</a></li>
+			        	<li><a href="list.html">Bootstrap3中文文档</a></li>
+			        	<li><a href="list.html">Bootstrap 4.0 预览</a></li>
+			        	<li><a href="list.html">Less 教程</a></li>
+			        	<li><a href="list.html">jQuery API</a></li>
+			        	<li><a href="list.html">网站实例</a></li>
+			        	<li class="pos">
+			        		<span class="glyphicon glyphicon-export clos" ></span>
+			        		<a href="list.html">前端高薪职位</a>
+			        	</li>
+			        </ul>
+			        <ol class="nav navbar-nav navbar-right hidden-sm">
+			        	<li>
+			        		<a href="javascript:;">关于</a>
+			        	</li>
+			        </ol>
+		        </div>
+			</div>
+		</nav>
+		<!--
+        	作者：594161154@qq.com
+        	描述：header头部分，主要展示图片处
+        -->
+		<header>
+			<div class="linears">
+				<div class="header-bg">
+					<div class="container containchange">
+						 <h1>Bootstrap</h1>
+						 <h2>简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</h2>
+						 <a class="btn btn-lg btn-primary btn-shadow" href="download.html" >
+						 	Bootstrap3中文文档(v3.3.5)
+						 </a>
+						 <br>
+						<a href="javascript:;" >Bootstrap2中文文档(v2.3.2)</a>
+					</div>
+				</div>
+			</div>
+			<div class="header-ft">
+				<ul>
+					<li>
+						<span class="glyphicon glyphicon-user"></span>
+						<a href="javascript">
+							Bootstrap技术交流群：318630708
+						</a>
+					</li>
+					<li>
+						<span class="glyphicon glyphicon-question-sign"></span>
+						<a href="javascript">
+							 Bootstrap问答社区
+						</a>
+						
+					</li>
+					<li>
+						<span class="glyphicon glyphicon-cloud"></span>
+						<a href="javascript" class="head-last">
+							 新浪微博：@Bootstrap中文网
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<!--
+        	作者：594161154@qq.com
+        	描述：section部分，主要为内容
+        -->
+        <section class="container cen">
+        	<div class="cont-text">
+        		<h3>Bootstrap相关优质项目推荐</h3>
+        		<p>这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的</p>
+        	</div>
+        	<ul class="row box"></ul>
+        </section>
+        <!--
+        	作者：594161154@qq.com
+        	描述：footer  底部信息描述
+        -->
+        <footer>
+        	<div class="container">
+        		<div class="row footer-row">
+        			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 footer-l">
+			            <img src="img/footer-bg.png" />
+			            <p>
+			            	本网站所列开源项目的中文版文档全部由
+			            	<a href="javascript:;">
+			            		Bootstrap中文网
+			            	</a>成员翻译整理，并全部遵循 
+			            	<a href="javascript:;">CC BY 3.0
+			            	</a>
+			            	协议发布。
+			            </p>
+        			</div>
+        			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 footer-r">
+        				<div class="row">
+				            <div class="col-xs-3">
+				                <h4>关于</h4>
+				                <ul class="list-unstyled">
+				                   <li><a href="javascript:;">关于我们</a></li>
+				                   <li><a href="javascript:;">广告合作</a></li>
+				                   <li><a href="javascript:;">友情链接</a></li>
+				                   <li><a href="javascript:;">招聘</a></li>
+				                </ul>
+				            </div>
+				            <div class="col-xs-3">
+				                <h4>联系方式</h4>
+				                <ul class="list-unstyled">
+				                   <li><a href="javascript:;">新浪微博</a></li>
+				                   <li><a href="javascript:;">电子邮件</a></li>
+				                </ul>
+				              </div>
+				              <div class="col-xs-3">
+				                <h4>旗下网站</h4>
+				                <ul class="list-unstyled">
+				                   <li><a href="javascript:;">Laravel中文网</a></li>
+				                   <li><a href="javascript:;">Ghost中国</a></li>
+				                </ul>
+				              </div>
+				              <div class="col-xs-3">
+				                <h4>赞助商</h4>
+				                <ul class="list-unstyled">
+				                   <li><a href="javascript:;">UCloud</a></li>
+				                   <li><a href="javascript:;">又拍云</a></li>
+				                </ul>
+				              </div>
+				           </div>
+         				</div>
+        			</div>
+        		</div>
+        		<div class="footer-last">
+        			<ul>
+        				<li><a href="javascript:;">京ICP备11008151号</a></li>
+        				<li>京公网安备11010802014853</li>
+        			</ul>
+        		</div>
+        	</div>
+        </footer>
+	</body>
+	<script>
+	'use strict'
+		//为循环添加dom元素，section内容
+		var obox=document.getElementsByClassName('box')[0];
+		var html='';
+		for(var i=0;i<24;i++){
+			html+=`<li class="col-lg-3 col-md-4 col-sm-6 sec-top">
+	        			<div class="thumbnail">
+	        				<a>
+		        				<img src="img/content-img.png" />
+		        			</a>
+		        			<div class="caption con-hg">
+		        				<h3>Bootstrap 编码规范</h3>
+		        				<h4>by @mdo</h4>
+		        				<p>Bootstrap 编码规范：编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范。</p>
+		        			</div>
+	        			</div>
+	        		</li>`
+		}
+		obox.innerHTML=html;
+		
+		
+		var toup=document.getElementsByClassName('toup')[0];
+        window.onscroll=function(){
+        	uplist();
+        }
+        uplist();
+        //为toup按钮自动显示的封装函数
+        function uplist(){
+        	var top=window.pageYOffset;
+            if(top>400){
+            	toup.style.display='block';
+            }else{
+            	toup.style.display='none';
+            }
+        }
+        //点击按钮自动滑倒顶部
+        var onoff=false;
+        toup.onclick=function(){
+        	if(onoff) return;
+       		onoff=true
+        	var top=window.pageYOffset;
+           	var timer=null;
+            timer=setInterval(function(){
+            	top-=36;
+                if(top<=0){
+                onoff=false;
+                	top=0;
+                    clearInterval(timer)
+                }
+                window.scrollTo(0,top)
+            },16)
+        }
+	</script>
+</html>
