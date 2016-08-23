@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>照片墙</title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				overflow-x: hidden;
+			}
+			img{
+				border:none;
+			}
+			.wrap{}
+			.box{
+				width:800px;
+				height:400px;
+				margin:40px auto ;
+				perspective: 800px;
+			}
+			.box img{
+				width:10%;
+				float:left;
+			}
+			.btn{
+				width:120px;
+				text-align:center;
+				
+				padding:6px 10px;
+				background:rgb(0, 100, 0);
+				border-radius:4px;
+				font-size:16px;
+				color:#fff;
+				font-family: "微软雅黑";
+				box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+				border:none;
+				display:block;
+				margin:20px auto;
+				cursor:pointer;
+			}
+			.btn:hover{
+				background:seagreen;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				~function(){
+					var btn=document.querySelector(".btn");
+					var onf=true;
+					btn.onclick=function(){
+						var oimg=document.querySelectorAll("img");
+						if(!onf){
+							return;
+						};
+						onf=false;
+						var end1=0;
+						var end2=0;
+						for(var i=0;i<oimg.length;i++){
+							(function(i){
+								setTimeout(function(){
+									automove(oimg[i],'10ms',function(){
+										this.style.transform='scale(0)';
+									},function(){
+										automove(this,'1s',function(){
+											this.style.transform='scale(1)';
+											this.style.opacity=0;
+										},function(){
+											end1++;
+											if(end1==oimg.length){
+												toBig();
+											};
+										});
+									});
+								},Math.random()*1000);
+							})(i);
+						};
+						function toBig(){
+							for(var i=0;i<oimg.length;i++){
+								oimg[i].style.transition='';
+								oimg[i].style.transform='rotateY(0deg) translateZ(-'+Math.random()*500+'px)';
+								
+								(function(i){
+									setTimeout(function(){
+										automove(oimg[i],'2s',function(){
+											this.style.opacity=1;
+											this.style.transform='rotateY(-360deg) translateZ(0)';
+										},function(){
+											end2++;
+											if(end2==oimg.length){
+												onf=true;
+											};
+										});
+									},Math.random()*1000);
+								})(i);
+							};
+						};
+					};
+				}();
+				function automove(obj,times,fn,callback){
+					obj.style.transition=times;
+					fn.call(obj);
+					var clas=false;
+					obj.addEventListener('transitionend',function(){
+							if(!clas){
+								callback?callback.call(obj):'';
+								clas=true;
+							};
+					},false);
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="box">
+				<img src="img/1.jpg" alt="" />
+				<img src="img/2.jpg" alt="" />
+				<img src="img/3.jpg" alt="" />
+				<img src="img/4.jpg" alt="" />
+				<img src="img/5.jpg" alt="" />
+				<img src="img/6.jpg" alt="" />
+				<img src="img/7.jpg" alt="" />
+				<img src="img/8.jpg" alt="" />
+				<img src="img/9.jpg" alt="" />
+				<img src="img/10.jpg" alt="" />
+				<img src="img/11.jpg" alt="" />
+				<img src="img/12.jpg" alt="" />
+				<img src="img/13.jpg" alt="" />
+				<img src="img/14.jpg" alt="" />
+				<img src="img/15.jpg" alt="" />
+				<img src="img/16.jpg" alt="" />
+				<img src="img/17.jpg" alt="" />
+				<img src="img/18.jpg" alt="" />
+				<img src="img/19.jpg" alt="" />
+				<img src="img/20.jpg" alt="" />
+				<img src="img/21.jpg" alt="" />
+				<img src="img/22.jpg" alt="" />
+				<img src="img/23.jpg" alt="" />
+				<img src="img/24.jpg" alt="" />
+				<img src="img/25.jpg" alt="" />
+				<img src="img/1.jpg" alt="" />
+				<img src="img/2.jpg" alt="" />
+				<img src="img/3.jpg" alt="" />
+				<img src="img/4.jpg" alt="" />
+				<img src="img/5.jpg" alt="" />
+				<img src="img/6.jpg" alt="" />
+				<img src="img/7.jpg" alt="" />
+				<img src="img/8.jpg" alt="" />
+				<img src="img/9.jpg" alt="" />
+				<img src="img/10.jpg" alt="" />
+				<img src="img/11.jpg" alt="" />
+				<img src="img/12.jpg" alt="" />
+				<img src="img/13.jpg" alt="" />
+				<img src="img/14.jpg" alt="" />
+				<img src="img/15.jpg" alt="" />
+				<img src="img/16.jpg" alt="" />
+				<img src="img/17.jpg" alt="" />
+				<img src="img/18.jpg" alt="" />
+				<img src="img/19.jpg" alt="" />
+				<img src="img/20.jpg" alt="" />
+				<img src="img/21.jpg" alt="" />
+				<img src="img/22.jpg" alt="" />
+				<img src="img/23.jpg" alt="" />
+				<img src="img/24.jpg" alt="" />
+				<img src="img/25.jpg" alt="" />
+			</div>
+			<button class="btn">点击查看效果</button>
+		</div>
+	</body>
+</html>

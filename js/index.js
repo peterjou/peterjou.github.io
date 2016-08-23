@@ -33,6 +33,7 @@ window.onload=function(){
 			window.scrollTo(0,ups);	
 		},16)	
 	}
+	
 	//碰撞球
 	var peng=document.getElementsByClassName('peng')[0]
 	var pli=peng.getElementsByTagName('li');

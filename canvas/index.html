@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			#cans{
+				background:#000;
+			}
+			.wrap{
+				position:absolute;
+				width:100%;
+				height:100%;
+			}
+			.wrap ul{
+				position:absolute;
+				left:0;
+				top:100px;
+				right:0;
+				bottom:0;
+				margin:0 auto;
+				width:130px;
+				height:400px;
+				transform-origin: 25px 375px;
+			}
+			.wrap ul li{
+				position:absolute;
+				left:0;
+				top:0;
+				transition:1.2s;
+				transform-origin: 25px 375px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var wrap=document.getElementsByClassName('wrap')[0];
+				var ali=document.getElementsByTagName('li');
+				
+				
+				
+			    var g, m = "#69D2E7 #A7DBD8 #E0E4CC #F38630 #FA6900 #FF4E50 #F9D423".split(" "),
+			        a = [],
+			        
+			        h = !0;
+			        var e = document.getElementById("cans");
+			        n = e.getContext("2d"),
+				    e.width = document.documentElement.clientWidth;
+				    e.height = document.documentElement.clientHeight + 360;
+				    window.onresize=function(){
+						e.width=window.innerWidth;
+						e.height=window.innerHeight+400;
+					}
+			    e.onmousemove = function(f) {
+			        function d() {
+			            n.clearRect(0, 0, e.width, e.height);
+			            for (var c = 0; c < a.length; c++)
+			                if (a[c].x += 8 * a[c].vx, a[c].y += 8 * a[c].vy, a[c].r *= .94, a[c].index = c, 1 >= a[c].r) a.splice(a[c].index, 1);
+			                else {
+			                    var f = a[c],
+			                        b = n;
+			                    b.beginPath();
+			                    b.arc(f.x, f.y, f.r, 0, 2 * Math.PI);
+			                    b.globalCompositeOperation = "lighter";
+			                    b.fillStyle = f.color;
+			                    b.fill()
+			                }
+			            a.length || (clearInterval(g), h = !0)
+			        }
+			        for (var b = 0; 2 > b; b++) a.push({
+			            r: Math.round(35 * Math.random() + 10),
+			            x: f.clientX + Math.round(10 * Math.random() + -5),
+			            y: f.clientY + Math.round(10 * Math.random() + -5) + window.pageYOffset,
+			            vx: Math.random() - .5,
+			            vy: Math.random() - .5,
+			            color: m[Math.round(Math.random() * m.length)]
+			        }), 300 < a.length && a.shift();
+			        h && (clearInterval(g), g = setInterval(d, 30), h = !1)
+			    };
+				var len=ali.length;
+				var onf=true;
+				ali[len-1].onclick=function(){
+					if(onf){
+						for(var i=0;i<len;i++){
+							var r=-90+i*15;
+							ali[i].style.transform='rotate('+r+'deg)'
+						}
+						onf=false;
+					}else{
+						for(var i=0;i<len;i++){
+							ali[i].style.transform='rotate('+360+'deg)'
+						}
+						onf=true;
+					}
+					
+				}
+				for(var i=0;i<len-1;i++){
+					ali[i].index=i;
+					
+					ali[i].onclick=function(){
+						console.log(this.index)
+						var nk=0;
+						var nf=15;
+						this.style.transform='rotate(0deg)';
+						for(var j=this.index-1;j>=0;j--){
+							nk-=15;
+							ali[j].style.transform='rotate('+ nk+'deg)';
+						}
+						for(var j=this.index+1;j<len;j++){
+							nf+=15;
+							ali[j].style.transform='rotate('+ nf+'deg)';
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<canvas id="cans"></canvas>
+			<ul>
+				<li><img src="img/img1.png" alt="" /></li>
+				<li><img src="img/img2.png" alt="" /></li>
+				<li><img src="img/img3.png" alt="" /></li>
+				<li><img src="img/img4.png" alt="" /></li>
+				<li><img src="img/img5.png" alt="" /></li>
+				<li><img src="img/img6.png" alt="" /></li>
+				<li><img src="img/img7.png" alt="" /></li>
+				<li><img src="img/img8.png" alt="" /></li>
+				<li><img src="img/img9.png" alt="" /></li>
+				<li><img src="img/img10.png" alt="" /></li>
+				<li><img src="img/img11.png" alt="" /></li>
+				<li><img src="img/img13.png" alt="" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+				

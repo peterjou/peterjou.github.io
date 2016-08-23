@@ -63,11 +63,23 @@
 				margin:30px 5px; text-align:center; cursor:pointer;
 			}
 			#btns .active{ background:#ccc;}
+			.smalls{
+				position:absolute;
+				right:-200px;
+				top:20px;
+				display:none;
+			}
+			.smalls img{
+				height:98px;
+				width:98px;
+				border-radius:50%;
+			}
         </style>
 	</head>
 	<body >
 		
-		<div id="wrap">
+		<div id="wrap" style="">
+        	
 			<div id="toup"></div>
 			<section class="up">
 				<div class="upimg">
@@ -104,7 +116,7 @@
 							<ul>
 								<li>web工程师/Js代码编写</li>
 								<li>工作地点：北京</li>
-								<li>期望月薪：8K-9K</li>
+								<li>期望月薪：9K</li>
 							</ul>
 						</li>
 					</ul>
@@ -147,6 +159,16 @@
                     <div id='home'>
                     	<span>请点击图片查看</span>
                     </div>
+                    <div class="smalls">
+                    	<a href="canvas/index.html">
+                        	<img src="img/meilis.jpg"/>
+                        	<p>墙canva跟随<span><点击图片></span></p>
+                        </a>
+                        <a href="qiang/index.html">
+                        	<img src="img/t.jpg"/>
+                        	<p>照片<span><点击图片></span></p>
+                        </a>
+                    </div>
                 </div>
 			</section>
 			<footer>
@@ -165,6 +187,6 @@
                 </ol>
             </div>
 		</div>
-		
+		<canvas id="cans"></canvas>
 	</body>
 </html>
