@@ -115,10 +115,10 @@ window.onload=function(){
 	}
 	//轮播图清楚定时器
 	aul.onmouseenter=function(){
-		//clearInterval(timer)
+		clearInterval(timer)
 	}
 	ool.onmouseenter=function(){
-		//clearInterval(timer)
+		clearInterval(timer)
 	}
 	//鼠标离开时自动开启轮播图
 	aul.onmouseleave=function(){
@@ -163,7 +163,7 @@ window.onload=function(){
 		nTween(ali[n],{'opacity':1}, 200, 'linear')
 	}
 	//关于手机端banner的左右拖拽
-	//fnTab()
+	fnTab()
 	function fnTab()
 	{
 		var oTab=document.getElementsByClassName('use-3d')[0];
@@ -181,7 +181,6 @@ window.onload=function(){
 		bind(oTab,"touchstart",fnStart);
 		bind(oTab,"touchend",fnEnd);
 		auto();
-		var timer
 		function auto()
 		{
 			timer=setInterval(function(){
