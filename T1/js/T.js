@@ -115,14 +115,14 @@ window.onload=function(){
 	}
 	//轮播图清楚定时器
 	aul.onmouseover=function(){
-		clearInterval(timer)
+		//clearInterval(timer)
 	}
 	ool.onmouseover=function(){
-		clearInterval(timer)
+		//clearInterval(timer)
 	}
 	//鼠标离开时自动开启轮播图
 	aul.onmouseout=function(){
-		timer=setInterval(fmove,2000)
+		//timer=setInterval(fmove,2000)
 		aul.style.transform="rotateX(0)";
 		aul.style.transform="rotateY(0)";
 		for(var i=0;i<ali.length;i++){
@@ -150,7 +150,7 @@ window.onload=function(){
 		}
 	}
 	//初始化开启定时器
-	timer=setInterval(fmove,2000);
+	//timer=setInterval(fmove,2000);
 	//定时器的封装函数
 	function fmove(){
 		oli[n].className='';
@@ -161,6 +161,75 @@ window.onload=function(){
 		}
 		oli[n].className='mos1';
 		nTween(ali[n],{'opacity':1}, 200, 'linear')
+	}
+	//关于手机端banner的左右拖拽
+	fnTab()
+	function fnTab()
+	{
+		var oTab=document.getElementsByClassName('use-3d')[0];
+		var oList=document.getElementsByClassName('ju-ul')[0];
+		var ochid=document.getElementsByClassName('ju-ul')[0].children;
+		
+		var aNav=document.getElementsByClassName("ju-dians")[0].children;
+		
+		var iNow=0;
+		var iX=0;
+		var iW=view().w;
+		var oTimer=0;
+		var iStartTouchX=0;
+		var iStartX=0;
+		bind(oTab,"touchstart",fnStart);
+		bind(oTab,"touchmove",fnMove);
+		bind(oTab,"touchend",fnEnd);
+		auto();
+		
+		function auto()
+		{
+			timer=setInterval(function(){
+				iNow++;	
+				if(iNow>=aNav.length){
+					iNow=0;	
+				}
+				tab();
+			},2000);
+		}
+		function fnStart(ev)
+		{
+			clearInterval(timer);
+		}
+		function fnMove(ev)
+		{
+			
+		}
+		function fnEnd()
+		{
+			iNow++;
+			if(iNow>=aNav.length){
+				iNow=0;
+			}
+			tab();
+			auto();
+		}
+		function tab()
+		{
+			iX=-iNow*iW;
+			for(var i=0;i<aNav.length;i++)
+			{
+				removeClass(aNav[i],"mos1");
+				ochid[i].style.opacity=0;
+			}
+			ochid[iNow].style.opacity=1;
+			addClass(aNav[iNow],"mos1");
+		}
+		function bind(obj, ev, fn) { 
+			if (obj.addEventListener) {
+				obj.addEventListener(ev, fn, false);
+			} else {
+				obj.attachEvent('on' + ev, function() {
+					fn.call(obj);
+				});
+			}
+		}
 	}
 }
 
