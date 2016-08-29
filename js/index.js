@@ -116,6 +116,8 @@ window.onload=function(){
 						aLi[i].style.WebkitTransform="rotateX(-"+a*90+"deg)";
 					}else if(ac.indexOf('Media')!=-1){
 						aLi[i].style.transform="rotateX(-"+a*90+"deg)";
+					}else{
+						aLi[i].style.transform="rotateX(-"+a*90+"deg)";
 					}
 					
 				}	
