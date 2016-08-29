@@ -114,14 +114,14 @@ window.onload=function(){
 		}
 	}
 	//轮播图清楚定时器
-	aul.onmouseover=function(){
+	aul.onmouseenter=function(){
 		//clearInterval(timer)
 	}
-	ool.onmouseover=function(){
+	ool.onmouseenter=function(){
 		//clearInterval(timer)
 	}
 	//鼠标离开时自动开启轮播图
-	aul.onmouseout=function(){
+	aul.onmouseleave=function(){
 		//timer=setInterval(fmove,2000)
 		aul.style.transform="rotateX(0)";
 		aul.style.transform="rotateY(0)";
@@ -163,7 +163,7 @@ window.onload=function(){
 		nTween(ali[n],{'opacity':1}, 200, 'linear')
 	}
 	//关于手机端banner的左右拖拽
-	fnTab()
+	//fnTab()
 	function fnTab()
 	{
 		var oTab=document.getElementsByClassName('use-3d')[0];
@@ -179,10 +179,9 @@ window.onload=function(){
 		var iStartTouchX=0;
 		var iStartX=0;
 		bind(oTab,"touchstart",fnStart);
-		bind(oTab,"touchmove",fnMove);
 		bind(oTab,"touchend",fnEnd);
 		auto();
-		
+		var timer
 		function auto()
 		{
 			timer=setInterval(function(){
@@ -191,7 +190,7 @@ window.onload=function(){
 					iNow=0;	
 				}
 				tab();
-			},2000);
+			},3000);
 		}
 		function fnStart(ev)
 		{
